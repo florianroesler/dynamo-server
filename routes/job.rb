@@ -16,3 +16,10 @@ get '/job/launch' do
     redirect '/'
   end
 end
+
+
+get '/job/:id' do
+  id = params[:id]
+  @job = Jobs.all.find { |j| j.getId == id}
+  haml :job
+end

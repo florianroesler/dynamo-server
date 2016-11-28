@@ -30,11 +30,14 @@
                         .progress-bar.bg-green{:style=>"width:#{Memory.used/Memory.max.to_f*100}%"}
                   %li
                     %a{:href=>"/"}
-                      %i.fa.fa-home
-                      Home
+                      %i.fa.fa-tasks
+                      Jobs
                     %a{:href=>"/job/launch"}
                       %i.fa.fa-cogs
                       Launch Job
+                    %a{:href=>"/machines"}
+                      %i.fa.fa-server
+                      Machines
 
         .right_col
           = yield

@@ -4,3 +4,5 @@ vendor
 *.dylib
 dependencies/*.jar
 dependencies/*/*.jar
+aws.properties
+dcl.nodes

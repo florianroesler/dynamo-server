@@ -19,11 +19,13 @@
                 %th Iteration
                 %th Elapsed
                 %th Remaining
+                %th Actions
 
             %tbody
               -@jobs.each do |job|
                 %tr
-                  %td=job.getId
+                  %td
+                    %a{:href=>"/job/#{job.getId}"}=job.getId
                   %td=job.getName
                   %td
                     .progress
@@ -35,3 +37,6 @@
                   %td=job.getIteration
                   %td=Time.diff(Time.at(0), Time.at(job.getExecutionTime/1000))[:diff]
                   %td=Time.diff(Time.at(0), Time.at(job.estimatedRemainingRuntime/1000))[:diff]
+                  %td
+                    %a.btn.btn-success.btn-xs{:href=>"/job/#{job.getId}"}
+                      Details

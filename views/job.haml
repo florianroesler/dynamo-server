@@ -1,0 +1,35 @@
+.row
+  .col-md-12
+    .x_panel.tile.fixed-height-320
+      .x_title
+        %h2="#{@job.getName} (#{@job.getId})"
+        .clearfix
+      .x_content
+        .widget_summary
+          .col-md-12
+            .row
+              %h3 Performance Stats
+              %table.table
+                %thead
+                  %tr
+                    %th Device
+                    %th Time in seconds
+                %tbody
+                  -@job.getPerformanceStats.each do |entry|
+                    %tr
+                      %td=entry.key
+                      %td=entry.value
+            .row
+              %h3 Active Devices
+              %table.table
+                %thead
+                  %tr
+                    %th Name
+                    %th Type
+                    %th Machine
+                %tbody
+                  -@job.getActiveDevices.each do |device|
+                    %tr
+                      %td=device.getName
+                      %td=device.getType
+                      %td

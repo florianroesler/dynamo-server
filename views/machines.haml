@@ -1,0 +1,43 @@
+.row
+  .col-md-12
+    .x_panel.tile.fixed-height-320
+      .x_title
+        %h2 Machines
+        .clearfix
+      .x_content
+        .widget_summary
+          .col-md-12
+            .row
+              %h3 Currently Available
+              %table.table
+                %thead
+                  %tr
+                    %th ID
+                    %th IP
+                    %th Devices
+                %tbody
+                  -@machines.each do |node|
+                    %tr
+                      %td=node.getInstanceId
+                      %td=node.getPublicIp
+                      %td
+                        -node.getDevices.each do |device|
+                          %span= device.getPerformanceIdentifier
+
+            .row
+              %h3 Book Resources
+              %form.form-horizontal.col-md-12{:method=>'post', :action=>'/machines/book'}
+                .form-group
+                  %label.col-md-2.control-label Instance Type
+                  .col-md-2
+                    %select.form-control{:name=>'type'}
+                      %option{:value=>"t2.micro"} t2.micro
+                .form-group
+                  %label.col-md-2.control-label Count
+                  .col-md-2
+                    %input.form-control{:type=>'number', :value=>'1'}
+                .form-group
+                  %label.col-md-2
+                  .col-md-2
+                    %button.btn-success.form-control
+                      Book
