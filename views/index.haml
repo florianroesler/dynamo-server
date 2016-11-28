@@ -1,0 +1,37 @@
+.row
+  .col-md-12
+    .x_panel.tile.fixed-height-320
+      .x_title
+        %h2 Jobs
+        .clearfix
+      .x_content
+        .widget_summary
+          %table.table
+            %thead
+              %tr
+                %th Job ID
+                %th Job Name
+                %th Progress
+                %th Percent
+                %th Finished
+                %th Total
+                %th Running
+                %th Iteration
+                %th Elapsed
+                %th Remaining
+
+            %tbody
+              -@jobs.each do |job|
+                %tr
+                  %td=job.getId
+                  %td=job.getName
+                  %td
+                    .progress
+                      .progress-bar.bg-green{:style=>"width:#{job.getProgress*100}%"}
+                  %td="#{(job.getProgress*100).to_i}%"
+                  %td=job.finished
+                  %td=job.total
+                  %td=job.running
+                  %td=job.getIteration
+                  %td=Time.diff(Time.at(0), Time.at(job.getExecutionTime/1000))[:diff]
+                  %td=Time.diff(Time.at(0), Time.at(job.estimatedRemainingRuntime/1000))[:diff]

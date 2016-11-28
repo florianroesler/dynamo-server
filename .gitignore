@@ -1,0 +1,6 @@
+.bundle
+vendor
+*.so
+*.dylib
+dependencies/*.jar
+dependencies/*/*.jar

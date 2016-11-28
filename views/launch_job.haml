@@ -1,0 +1,22 @@
+.row
+  .col-md-12
+    .x_panel.tile.fixed-height-320
+      .x_title
+        %h2 Launch Job
+        .clearfix
+      .x_content
+        .widget_summary
+          %form.form-horizontal.col-md-12{:method=>"get", :action=>"/job/launch"}
+            .form-group
+              %label.col-md-2.control-label Job
+              .col-md-2
+                %select.form-control{:name=>"name"}
+                  %option{:value=>"matrix"} Matrix Multiplication
+                  %option{:value=>"kmeans"} KMeans
+                  %option{:value=>"mandelbrot"} Mandelbrot
+
+            .form-group
+              %label.col-md-2
+              .col-md-2
+                %button.btn-success.form-control
+                  Launch

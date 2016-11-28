@@ -1,0 +1,40 @@
+!!! 5
+%html
+  %head
+    %title DynamOpenCL Server
+    %link{:href => "/vendors/bootstrap/dist/css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "/vendors/font-awesome/css/font-awesome.min.css", :rel => "stylesheet"}
+    %link{:href => "/vendors/nprogress/nprogress.css", :rel => "stylesheet"}
+    %link{:href => "/vendors/iCheck/skins/flat/green.css", :rel => "stylesheet"}
+    %link{:href => "/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css", :rel => "stylesheet"}
+    %link{:href => "/vendors/jqvmap/dist/jqvmap.min.css", :rel => "stylesheet"}
+    %link{:href => "/vendors/bootstrap-daterangepicker/daterangepicker.css", :rel => "stylesheet"}
+    %link{:href => "/css/custom.min.css", :rel => "stylesheet"}
+
+  %body.nav-md
+    .container.body
+      .main_container
+        .col-md-3.left_col
+          .left_col.scroll-view
+            .navbar.nav_title{:style=>"border: 0;"}
+              %a.site_title{:href=>"/"}
+                %i.fa.fa-chevron-circle-right{:style=>"border: 0;"}
+                DynamOpenCL
+            .main_menu_side.hidden-print.main_menu
+              .menu_section
+                %ul.nav.side-menu
+                  %li
+                    %a
+                      %span="Memory Load (max. #{(Memory.max/1024/1024).to_i}) MB"
+                      .progress
+                        .progress-bar.bg-green{:style=>"width:#{Memory.used/Memory.max.to_f*100}%"}
+                  %li
+                    %a{:href=>"/"}
+                      %i.fa.fa-home
+                      Home
+                    %a{:href=>"/job/launch"}
+                      %i.fa.fa-cogs
+                      Launch Job
+
+        .right_col
+          = yield
