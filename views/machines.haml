@@ -24,7 +24,7 @@
                       %td=node.getPublicIp
                       %td
                         -node.getDevices.each do |device|
-                          %span= device.getPerformanceIdentifier
+                          %span="#{device.getPerformanceIdentifier} (#{device.getDeviceId})"
                       %td
                         %form{ :method=>"post", :action=>"/machines/unbook" }
                           %input{ :type=>"hidden", :name=>"instance_id", :value=>node.getInstanceId }
