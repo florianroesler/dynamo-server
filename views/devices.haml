@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    .x_panel.tile.fixed-height-320
+      .x_title
+        %h2 Devices
+        .clearfix
+      .x_content
+        .widget_summary
+          .col-md-12
+            .row
+              %table.table
+                %thead
+                  %tr
+                    %th ID
+                    %th Name
+
+                %tbody
+                  -@devices.each do |device|
+                    %tr
+                      %td=device.getDeviceId
+                      %td=device.getPerformanceIdentifier
