@@ -9,7 +9,7 @@ class JobExecutor
 
   def self.mandelbrot
     Thread.new do
-      Java::FrDynamoSamplesMandelbrot.MandelbrotMain.main(["5000","10000","10"])
+      Java::FrDynamoSamplesMandelbrot.MandelbrotMain.main(["5000","10000","10", "0"])
     end
   end
 

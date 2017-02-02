@@ -12,7 +12,7 @@ class Pricing
       body = body.gsub(/{\s*(\w)/, '{"\1').gsub(/,\s*(\w)/, ',"\1').gsub(/(\w):/, '\1":')
 
       prices = JSON.parse(body)
-      region = Java::FrDynamoEc2::MachineManager.getInstance.getRegion
+      region = Java::FrDynamoEc2::EC2MachineManager.getInstance.getRegion
       region_object = prices['config']['regions'].find { |r| r['region'] == region }
       instances = region_object['instanceTypes'].map do |types|
         types['sizes'].map do |size|

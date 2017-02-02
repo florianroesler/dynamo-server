@@ -24,7 +24,7 @@
               .menu_section
                 %ul.nav.side-menu
                   %li
-                    %a=Java::FrDynamoEc2::MachineManager.getInstance.getRegion
+                    %a=Java::FrDynamoEc2::EC2MachineManager.getInstance.getRegion
                   %li
                     %a
                       %span="Memory Load (max. #{(Memory.max/1024/1024).to_i}) MB"
