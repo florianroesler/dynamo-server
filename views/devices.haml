@@ -13,9 +13,11 @@
                   %tr
                     %th ID
                     %th Name
+                    %th Cloud Device
 
                 %tbody
                   -@devices.each do |device|
                     %tr
                       %td=device.getDeviceId
                       %td=device.getPerformanceIdentifier
+                      %td=@cloud_devices.include?(device) ? 'Yes' : 'No'

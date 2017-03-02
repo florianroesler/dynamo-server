@@ -13,12 +13,17 @@
                 %thead
                   %tr
                     %th Device
-                    %th Time in seconds
+                    %th Run Count
+                    %th Average Runtime
+                    %th Standard Deviation
                 %tbody
-                  -@job.getPerformanceStats.each do |entry|
+                  -@job.getDevicePerformance.getMeasurements.each do |entry|
                     %tr
-                      %td=entry.key
-                      %td=entry.value
+                      %td=entry[0]
+                      %td=entry[1].length
+                      %td="#{Java::FrDynamoPerformance::Statistics.average(entry[1])} ms" 
+                      %td=Java::FrDynamoPerformance::Statistics.stdev(entry[1])
+
             .row
               %h3 Active Devices
               %table.table
@@ -26,10 +31,8 @@
                   %tr
                     %th Name
                     %th Type
-                    %th Machine
                 %tbody
                   -@job.getActiveDevices.each do |device|
                     %tr
                       %td=device.getName
                       %td=device.getType
-                      %td
